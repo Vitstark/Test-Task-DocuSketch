@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -31,7 +32,7 @@ class UserServiceTest {
     public UserServiceTest(UsersRepository usersRepository, PostsRepository postsRepository) {
         this.usersRepository = usersRepository;
         this.postsRepository = postsRepository;
-        userService = new UserService(usersRepository, postsRepository);
+        userService = new UserService(usersRepository, postsRepository, new BCryptPasswordEncoder());
     }
 
     @BeforeEach

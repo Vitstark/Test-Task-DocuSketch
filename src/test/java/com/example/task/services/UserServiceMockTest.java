@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceMockTest {
@@ -21,12 +22,14 @@ public class UserServiceMockTest {
 
     @BeforeEach
     public void setUp() {
-        userService = new UserService(usersRepository, postsRepository);
+        userService = new UserService(usersRepository, postsRepository, new BCryptPasswordEncoder());
     }
 
     @Test
     public void mockTest() {
-        User user = User.builder().build();
+        User user = User.builder()
+                .password("1234")
+                .build();
         userService.save(user);
         Mockito.verify(usersRepository).save(user);
     }
