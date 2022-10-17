@@ -24,7 +24,7 @@ public class PostsRepositoryTest {
     public void initDB() {
         post = Post.builder()
                 .text("text")
-                .owner(new ObjectId("634c173323dd1359d222e780"))
+                .userId(new ObjectId("634c173323dd1359d222e780"))
                 .dateOfCreation(LocalDateTime.now())
                 .build();
     }
@@ -39,7 +39,7 @@ public class PostsRepositoryTest {
         postsRepository.save(post);
         Post actualPost = postsRepository.findById(post.getId()).get();
 
-        assertEquals(post.getOwner(), actualPost.getOwner());
+        assertEquals(post.getUserId(), actualPost.getUserId());
         assertEquals(post.getText(), actualPost.getText());
     }
 

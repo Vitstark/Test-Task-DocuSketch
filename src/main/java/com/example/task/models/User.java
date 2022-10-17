@@ -2,7 +2,6 @@ package com.example.task.models;
 
 import lombok.*;
 import org.bson.types.ObjectId;
-import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.annotation.*;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.*;
@@ -13,9 +12,9 @@ import java.util.List;
 @Data
 @Builder
 @AllArgsConstructor
-@Document(collection = "users")
+@Document
 public class User {
-    @MongoId
+    @Id
     private ObjectId id;
 
     @Email(message = "Email should be correct")
