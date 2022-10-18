@@ -48,6 +48,6 @@ public class AuthController {
 
         userService.save(user);
 
-        return "redirect:/users/" + user.getId();
+        return "redirect:/users/mypage";
     }
 }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/users/search" method="get">
+    <label for="name"> Enter a name
+        <input type="text" name="name" id="name" placeholder="name">
+    </label>
+
+    <input type="submit">
+</form>
+
+<div th:each="user : ${users}">
+    <a th:href="@{/users/{id}(id=${user.id})}" style="font-size: 24px" th:text="${user.name}">
+    </a>
+</div>
+</body>
+</html>

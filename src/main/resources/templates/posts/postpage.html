@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Post:</h3>
+
+<div th:text="'Date of create: ' + ${post.dateOfCreation.toLocalDate()} + ' '
+        + ${post.getDateOfCreation().getHour()} + ':' + ${post.getDateOfCreation().getMinute()}"></div>
+<div th:text="'Message: ' + ${post.text}"></div>
+
+<form th:action="@{/comments/new(id=${post.id})}" method="get">
+    <input type="hidden" th:name="postId" th:value="${post.id}">
+    <input type="submit" value="Create new comment">
+</form>
+
+<h4>Comments: </h4>
+
+<div th:each="comment : ${post.comments}">
+    <hr>
+
+    <div th:text="'Date of create: ' + ${comment.dateOfCreation.toLocalDate()} + ' '
+        + ${comment.getDateOfCreation().getHour()} + ':' + ${comment.getDateOfCreation().getMinute()}"></div>
+    <div th:text="'Message: ' + ${comment.text}"></div>
+</div>
+</body>
+</html>

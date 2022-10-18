@@ -21,13 +21,13 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/users/*/newpost", "/users/*/*/newcomment")
+                .antMatchers("/users/*/posts/new", "/users/*/*/*/newcomment", "/users/mypage")
                 .authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin().loginPage("/auth/login")
                 .loginProcessingUrl("/auth/process_login")
-                .defaultSuccessUrl("/me", true)
+                .defaultSuccessUrl("/users/mypage", true)
                 .failureUrl("/auth/login?error")
                 .and()
                 .logout().logoutUrl("/auth/logout")
