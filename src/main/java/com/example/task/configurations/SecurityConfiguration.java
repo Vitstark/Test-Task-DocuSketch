@@ -21,7 +21,7 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/users/*/posts/new", "/users/*/*/*/newcomment", "/users/mypage")
+                .antMatchers("/posts/new", "/comment/new", "/users/mypage")
                 .authenticated()
                 .anyRequest().permitAll()
                 .and()
