@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>User:</h3>
+<div th:text="'Name: ' + ${user.name}"></div>
+<div th:text="'Email: ' + ${user.email}"></div>
+
+<form th:action="@{/posts/new}" method="get">
+    <input type="submit" value="Create new post">
+</form>
+
+<div th:each="post : ${user.posts}">
+    <hr>
+
+    <a th:href="@{/posts/{postId}(postId=${post.id})}"
+       th:text="'Post: ' + ${post.text}"></a>
+
+    <form th:action="@{/posts/{postId}(postId=${post.id})}"
+          th:method="delete">
+        <input type="submit" value="Delete post">
+    </form>
+
+</div>
+</body>
+</html>

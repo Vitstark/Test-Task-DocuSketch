@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>User:</h3>
+<div th:text="'Name: ' + ${user.name}"></div>
+<div th:text="'Email: ' + ${user.email}"></div>
+
+<div th:each="post : ${user.posts}">
+    <hr>
+
+    <a th:href="@{/posts/{postId}(postId=${post.id})}"
+       th:text="'Post: '${post.text}"></a>
+</div>
+</body>
+</html>
